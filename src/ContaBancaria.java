@@ -23,10 +23,29 @@ public class ContaBancaria {
     }
 
     public void depositar(double valorDepositado){
-        saldoConta+= valorDepositado;
+
+        if (valorDepositado > 0){
+            saldoConta+= valorDepositado;
+
+            System.out.println("Agora o Saldo de sua conta é de R$"+getSaldoConta());
+        }else {
+            System.out.println("Digite um valor válido.");
+        }
     }
 
     public void sacar(double valorSaque){
-        saldoConta-= valorSaque;
+
+        if (valorSaque > 0 && valorSaque <= getSaldoConta()){
+            saldoConta-= valorSaque;
+            System.out.println("Agora o Saldo de sua conta é de R$"+getSaldoConta());
+        }else{
+            System.out.println("Valor indisponivel para saque");
+        }
+    }
+
+    public void exibirDados(){
+        System.out.println("Nome: "+getTitular());
+        System.out.println("Número da Conta: "+getNumeroConta());
+        System.out.println("O saldo de sua conta é R$"+getSaldoConta());
     }
 }

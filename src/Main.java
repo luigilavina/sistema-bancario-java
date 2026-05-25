@@ -24,13 +24,8 @@ public class Main {
           System.out.println("Seu saldo atual é de R$"+ contaBancaria.getSaldoConta());
           System.out.println("Qual o valor que voce quer depositar: ");
           double valorDeposito = scanner.nextDouble();
-          if (valorDeposito > 0){
-            contaBancaria.depositar(valorDeposito);
 
-            System.out.println("Agora o Saldo de sua conta é de R$"+contaBancaria.getSaldoConta());
-          }else {
-            System.out.println("Digite um valor válido.");
-          }
+          contaBancaria.depositar(valorDeposito);
           break;
         }
         case 2: {
@@ -38,12 +33,7 @@ public class Main {
           System.out.println("Qual o valor que voce quer sacar: ");
           double valorSaque = scanner.nextDouble();
 
-          if (valorSaque > 0 && valorSaque <= contaBancaria.getSaldoConta()){
-            contaBancaria.sacar(valorSaque);
-            System.out.println("Agora o Saldo de sua conta é de R$"+contaBancaria.getSaldoConta());
-          }else{
-            System.out.println("Valor indisponivel para saque");
-          }
+          contaBancaria.sacar(valorSaque);
           break;
         }
         case 3:{
@@ -51,9 +41,7 @@ public class Main {
           break;
         }
         case 4:{
-          System.out.println("Nome: "+contaBancaria.getTitular());
-          System.out.println("Número da Conta: "+contaBancaria.getNumeroConta());
-          System.out.println(contaBancaria.getSaldoConta());
+          contaBancaria.exibirDados();
           break;
         }
         case 5:{
