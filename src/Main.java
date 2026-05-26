@@ -15,8 +15,8 @@ public class Main {
     ContaBancaria contaBancaria = new ContaBancaria(titular, numeroConta, saldoConta);
 
     int escolha = 0;
-    while (escolha != 5){
-      System.out.println("Escolha uma das opções: 1-Depositar | 2-Sacar | 3-Mostrar saldo | 4-Mostrar Dados | 5-Sair : ");
+    while (escolha != 6){
+      System.out.println("Escolha uma das opções: 1-Depositar | 2-Sacar | 3-Mostrar saldo | 4-Mostrar Dados | 5-Historico | 6-Sair : ");
       escolha = scanner.nextInt();
 
       switch (escolha){
@@ -45,6 +45,10 @@ public class Main {
           break;
         }
         case 5:{
+          contaBancaria.mostrarHistorico();
+          break;
+        }
+        case 6:{
           System.out.println("Saindo do sistema...");
           break;
         }
