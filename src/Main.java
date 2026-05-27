@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -9,16 +10,34 @@ public class Main {
 
     while (opcaoPrincipal != 4) {
       System.out.println("1-Criar conta | 2-Listar contas | 3-Acessar conta | 4-Sair");
-      opcaoPrincipal = scanner.nextInt();
-      scanner.nextLine();
+      try {
+        opcaoPrincipal = scanner.nextInt();
+        scanner.nextLine();
+
+      }catch (InputMismatchException e){
+        System.out.println("Digite apenas números.");
+        scanner.nextLine();
+        continue;
+      }
 
       switch (opcaoPrincipal) {
         case 1: {
           System.out.println("Digite seu nome: ");
           String titular = scanner.nextLine();
 
-          System.out.println("Digite o número da conta: ");
-          int numeroConta = scanner.nextInt();
+          int numeroConta;
+
+          try {
+            System.out.println("Digite o número da conta: ");
+            numeroConta = scanner.nextInt();
+            scanner.nextLine();
+
+          } catch (InputMismatchException e) {
+            System.out.println("Digite apenas números.");
+            scanner.nextLine();
+            break;
+          }
+
 
           double saldoConta = 500;
 
@@ -35,8 +54,17 @@ public class Main {
         }
 
         case 3: {
-          System.out.println("Digite o número da conta: ");
-          int numeroBusca = scanner.nextInt();
+          int numeroBusca;
+          try {
+            System.out.println("Digite o número da conta: ");
+            numeroBusca = scanner.nextInt();
+            scanner.nextLine();
+
+          } catch (InputMismatchException e) {
+            System.out.println("Digite apenas números.");
+            scanner.nextLine();
+            break;
+          }
 
           ContaBancaria contaEncontrada = banco.buscarConta(numeroBusca);
 
@@ -47,20 +75,42 @@ public class Main {
 
             while (opcaoConta != 6) {
               System.out.println("1-Depositar | 2-Sacar | 3-Mostrar saldo | 4-Mostrar dados | 5-Histórico | 6-Voltar");
-              opcaoConta = scanner.nextInt();
+              try {
+                opcaoConta = scanner.nextInt();
+                scanner.nextLine();
+
+              } catch (InputMismatchException e) {
+                System.out.println("Digite apenas números.");
+                scanner.nextLine();
+                continue;
+              }
 
               switch (opcaoConta) {
                 case 1: {
-                  System.out.println("Qual o valor que você quer depositar ?");
-                  double valorDeposito = scanner.nextDouble();
-                  contaEncontrada.depositar(valorDeposito);
+                  try {
+                    System.out.println("Qual o valor que você quer depositar ?");
+                    double valorDeposito = scanner.nextDouble();
+                    scanner.nextLine();
+
+                    contaEncontrada.depositar(valorDeposito);
+                  } catch (InputMismatchException e) {
+                    System.out.println("Digite apenas números.");
+                    scanner.nextLine();
+                  }
                   break;
                 }
 
                 case 2: {
-                  System.out.println("Qual o valor que você quer sacar ?");
-                  double valorSaque = scanner.nextDouble();
-                  contaEncontrada.sacar(valorSaque);
+                  try {
+                    System.out.println("Qual o valor que você quer sacar ?");
+                    double valorSaque = scanner.nextDouble();
+                    scanner.nextLine();
+
+                    contaEncontrada.sacar(valorSaque);
+                  }catch (InputMismatchException e){
+                    System.out.println("Digite apenas números.");
+                    scanner.nextLine();
+                  }
                   break;
                 }
 
